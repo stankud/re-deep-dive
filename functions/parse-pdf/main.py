@@ -1,7 +1,8 @@
 """
 Lambda example with external dependency
 """
-
+import sys
+sys.path.insert(0, "./lib")
 import logging
 import requests
 
