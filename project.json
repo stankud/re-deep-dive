@@ -3,6 +3,8 @@
   "description": "",
   "memory": 128,
   "timeout": 5,
+  "profile": "apex",
+  "region": "us-east-1",
   "role": "arn:aws:iam::447626572683:role/deep-dive_lambda_function",
   "environment": {}
 }
