@@ -1,0 +1,11 @@
+{
+  "description": "Java example function with existing build.gradle",
+  "handler": "lambda.ParsePDF::handler",
+  "runtime": "java",
+  "timeout": 30,
+  "memory": 512,
+  "hooks": {
+    "build": "gradle build",
+    "clean": "gradle clean"
+  }
+}
