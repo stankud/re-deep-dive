@@ -68,31 +68,43 @@ public class ParsePDF {
         String srcKeyName = event.getKeyName();
         String srcLclFilePath = "/tmp/input.pdf";
         String dstLclFilePath = "/tmp/output.csv";
-        String comm = String.format(
+        String convertComm = String.format(
           "java -jar %s -o %s -r %s", jarpath, dstLclFilePath, srcLclFilePath);
+        String lsComm = "ls -lah /tmp";
         String s;
-        Process p;
+        Process convertP, lsP;
 
-        System.out.println(srcKeyName);
-        System.out.println(comm);
         try {
+            // Download pdf from s3
             InputStream in = s3.getObject(
               srcBucketName, srcKeyName).getObjectContent();
-
             Files.copy(in, Paths.get(srcLclFilePath));
 
+            // Convert pdf to csv
+            System.out.println("Running: " + convertComm);
+            convertP = Runtime.getRuntime().exec(convertComm);
+            BufferedReader convertBr = new BufferedReader(
+                new InputStreamReader(convertP.getInputStream()));
 
-
-            p = Runtime.getRuntime().exec("ls -lah /tmp");
-            BufferedReader br = new BufferedReader(
-                new InputStreamReader(p.getInputStream()));
-
-            while ((s = br.readLine()) != null)
+            while ((s = convertBr.readLine()) != null)
                 System.out.println("line: " + s);
 
-            p.waitFor();
-            System.out.println ("exit: " + p.exitValue());
-            p.destroy();
+            convertP.waitFor();
+            System.out.println ("exit: " + convertP.exitValue());
+            convertP.destroy();
+
+            // Log out /tmp directory
+            System.out.println("Running: " + lsComm);
+            lsP = Runtime.getRuntime().exec(lsComm);
+            BufferedReader lsBr = new BufferedReader(
+                new InputStreamReader(lsP.getInputStream()));
+
+            while ((s = lsBr.readLine()) != null)
+                System.out.println("line: " + s);
+
+            lsP.waitFor();
+            System.out.println ("exit: " + lsP.exitValue());
+            lsP.destroy();
         } catch (Exception e) {
             System.out.println ("Encountered exception: " + e);
         }
