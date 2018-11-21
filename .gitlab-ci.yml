@@ -1,6 +1,6 @@
 stage_deploy:
     script:
-        – cd ~/ops
-        – touch new_file.txt
+        cd ~/ops
+        touch new_file.txt
     
     
