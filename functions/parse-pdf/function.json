@@ -1,7 +1,7 @@
 {
   "description": "Java example function with existing build.gradle",
   "profile": "default",
-  "role": "arn:aws:iam::447626572683:role/deep-dive_lambda_function",
+  "role": "arn:aws:iam::962957547431:role/apex-doc-mgr_lambda_function",
   "handler": "lambda.ParsePDF::handler",
   "runtime": "java",
   "timeout": 30,
