@@ -1,4 +1,6 @@
 stage_deploy:
+    tags:
+        - apex
     script:
         - "echo $PWD"
         - "apex deploy"
