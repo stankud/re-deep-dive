@@ -1,7 +1,6 @@
 stage_deploy:
     script:
         - "echo $PWD"
-        - "cd ~/ops"
-        - "touch new_file.txt"
+        - "apex deploy"
     
     
