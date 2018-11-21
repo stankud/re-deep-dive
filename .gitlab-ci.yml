@@ -1,3 +1,6 @@
-before_script:
-    -curl https://raw.githubusercontent.com/apex/apex/master/install.sh | sh
+web_server_build:
+script:
+– cd ~/ops
+– touch new_file.txt
+    
     
