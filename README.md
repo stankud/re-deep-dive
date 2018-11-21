@@ -26,6 +26,14 @@ worker Lambas to process files:
 Follow [instruction](http://apex.run/#installation) to install Apex Lambda
 Deployment tool
 
+## Setup
+```
+$ apex init --env {prod|stage|dev}
+```
+
+This command will attempt to create a role within your aws account to be used
+by apex
+
 ## Deploy
 
 from project root:
