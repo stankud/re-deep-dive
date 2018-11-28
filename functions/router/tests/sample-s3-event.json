@@ -11,12 +11,12 @@
         "object": {
           "eTag": "0123456789abcdef0123456789abcdef",
           "sequencer": "0A1B2C3D4E5F678901",
-          "key": "HappyFace.jpg",
+          "key": "home/user=skudrow/stage=dropbox/clay/tax/rptcertificatelist.pdf",
           "size": 1024
         },
         "bucket": {
           "arn": "bucketarn",
-          "name": "sourcebucket",
+          "name": "re-deep-dive",
           "ownerIdentity": {
             "principalId": "EXAMPLE"
           }
