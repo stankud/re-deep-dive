@@ -18,15 +18,14 @@ class EventParser:
         bucket = record['bucket']['name']
         key = record['object']['key']
         ext = path.splitext(key)[1]
-
         params = {}
         seperator = '='
 
         for frag in key.split('/'):
-            key, sep, value = frag.partition(seperator)
+            param_key, sep, param_val = frag.partition(seperator)
 
             if sep == seperator:
-                params[key] = value
+                params[param_key] = param_val
 
         f = S3File(bucket, key, ext, params)
 
