@@ -1,6 +1,0 @@
-{
-  "description": "Pyton function for parsing Excel files",
-  "runtime": "python3.6",
-  "memory": 128,
-  "timeout": 60
-}
