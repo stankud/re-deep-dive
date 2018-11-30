@@ -1,27 +1,30 @@
 import openpyxl
 import csv
-import os
-from os.path import basename
-from pathlib import Path
 
-def convert(filename,ftype):
-    try:
-        wb = openpyxl.load_workbook(filename)
+
+class Converter():
+
+    def __init__(self, input, output):
+        self.input = input
+        self.output = output
+
+    def convert(self):
+        wb = openpyxl.load_workbook(self.input)
         sh = wb.get_active_sheet()
 
-        with open(filename + '.csv', 'w', newline='') as f:
-            c = csv.writer(f)
+        with open(self.output, 'w') as f:
+            out = csv.writer(f)
 
-        for r in sh.rows:
-            arr = []
+            for row in sh.rows:
 
-            for cell in r:
-                arr.append(cell.value)
+                cells = []
+                for cell in row:
 
-            if cell.hyperlink:
-                arr.append(cell.hyperlink.target)
-                arr.append(ftype)
-                c.writerow(arr)
+                    if cell.hyperlink:
+                        cell_val = f'{cell.value} ({cell.hyperlink.target})'
+                    else:
+                        cell_val = cell.value
 
-    except Exception as e:
-        print(e)
+                    cells.append(cell_val)
+
+                out.writerow(cells)

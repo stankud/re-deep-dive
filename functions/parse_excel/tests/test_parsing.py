@@ -1,5 +1,8 @@
-from functions.parse_excel.parsing import convert
+from functions.parse_excel.parsing import Converter
 
-file = '/Users/stankudrow/Downloads/asmt.xlsx'
+file_in = '/Users/stankudrow/Downloads/asmt.xlsx'
+file_out = '/Users/stankudrow/Downloads/asmt.csv'
 
-convert(file, 'xlsx')
+converter = Converter(file_in, file_out)
+
+converter.convert()
